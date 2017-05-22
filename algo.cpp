@@ -1,14 +1,7 @@
 #include <iostream>
 #include <vector>
 
-int main() {
-    size_t t = 0; // число, которое необходимо представить в виде суммы
-    std::cin >> t;
-    size_t n = 0;
-    std::cin >> n; // количество вводимых положительных чисел
-    std::vector<size_t> array(n); // массив, в котором хранятся введенные числа
-    for (size_t i = 0; i != n; ++i)
-        std::cin >> array[i];
+void test(size_t t, size_t n, std::vector<size_t>& array) {
     std::vector<size_t> solver(t + 1); // массив, в котором я храню последнее слагаемое в разложении числа
     for (size_t i = 0; i != n && array[i] <= t; ++i) {
         solver[array[i]] = array[i]; // инициализирую подходящие элементы
@@ -25,4 +18,37 @@ int main() {
         std::cout << "YES\n";
     else
         std::cout << "NO\n";
+}
+
+int main() {
+//    size_t t = 0; // число, которое необходимо представить в виде суммы
+//    std::cin >> t;
+//    size_t n = 0;
+//    std::cin >> n; // количество вводимых положительных чисел
+//    std::vector<size_t> array(n); // массив, в котором хранятся введенные числа
+//    for (size_t i = 0; i != n; ++i)
+//        std::cin >> array[i];
+    size_t t = 7;
+    size_t n = 3;
+    std::vector<size_t> array = {1, 2, 4};
+    std::cout << "ANSWER: YES\n";
+    test(t, n, array);
+    t = 7;
+    n = 4;
+    array.clear();
+    array = {1, 1, 1, 1};
+    std::cout << "ANSWER: NO\n";
+    test(t, n, array);
+    t = 7;
+    n = 7;
+    array.clear();
+    array = {1, 1, 1, 1, 1, 1, 1};
+    std::cout << "ANSWER: YES\n";
+    test(t, n, array);
+    t = 7;
+    n = 3;
+    array.clear();
+    array = {0, 0, 0};
+    std::cout << "ANSWER: NO\n";
+    test(t, n, array);
 }
